@@ -10,7 +10,6 @@ foreach (var rucksack in rucksacks)
 {
     var contents = GetCompartmentContents(rucksack);
     var sharedItem = GetSharedItem(contents.Item1, contents.Item2);
-    var itemTypes = GetItemTypes();
     var priority = GetItemPriority(sharedItem);
     totalPriority += priority;
 }
