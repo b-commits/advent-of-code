@@ -6,18 +6,18 @@ const int ALPHABET_COUNT = 26;
 const int ELVES_PER_GROUP = 3;
 
 var totalPriority = 0;
-var threeRucksacks = new List<string>();
+var groupRucksacks = new List<string>();
 
 foreach (var rucksack in rucksacks)
 {
-    threeRucksacks.Add(rucksack);
+    groupRucksacks.Add(rucksack);
 
-    if (threeRucksacks.Count == ELVES_PER_GROUP)
+    if (groupRucksacks.Count == ELVES_PER_GROUP)
     {
-        var groupBadge = GetGroupBadge(threeRucksacks);
+        var groupBadge = GetGroupBadge(groupRucksacks);
         var priority = GetItemPriority(groupBadge);
         totalPriority += priority;
-        threeRucksacks = new List<string>();
+        groupRucksacks = new List<string>();
     }
 }
 
