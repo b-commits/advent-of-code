@@ -23,20 +23,22 @@ foreach (var rucksack in rucksacks)
 
 Console.WriteLine($"Total priority of group badges {totalPriority}.");
 
-char? GetGroupBadge(IEnumerable<string> groupRucksacks)
+char? GetGroupBadge(List<string> groupRucksacks)
 {
-    var groupRucksackContents =
-        groupRucksacks.SelectMany(rucksack => rucksack).ToList();
-    
-    var badge = groupRucksackContents
-        .Single(item => groupRucksackContents.Count(y => y == item) == ELVES_PER_GROUP);
-
-    return badge;
+    foreach (var items in groupRucksacks.Select(groupRucksack => groupRucksack.ToCharArray()))
+    {
+        foreach (var item in items)
+        {
+            var foundBadge = groupRucksacks.All(rucksack => rucksack.Contains(item));
+            if (foundBadge) return item;
+        }
+    }
+    return null;
 }
 
 IEnumerable<int> GetItemTypes()
     => Enumerable.Range(ASCII_LOWERCASE_A, ALPHABET_COUNT)
-        .Concat(Enumerable.Range(ASCII_CAPITAL_A, ALPHABET_COUNT)).ToList(); 
+        .Concat(Enumerable.Range(ASCII_CAPITAL_A, ALPHABET_COUNT)).ToList();
 
 int GetItemPriority(char? item)
     => GetItemTypes().ToList().FindIndex(x=> x == item) + 1;
