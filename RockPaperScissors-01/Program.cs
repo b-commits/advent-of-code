@@ -1,5 +1,4 @@
-﻿// ReSharper disable All
-var singleGame = File.ReadLines("../../../input.txt");
+﻿var singleGame = File.ReadLines("../../../input.txt");
 
 const string OPPONENT_ROCK = "A";
 const string OPPONENT_PAPER = "B";
@@ -17,9 +16,6 @@ const int ROCK_POINTS = 1;
 const int PAPER_POINTS = 2;
 const int SCISSOR_POINTS = 3;
 
-const string ALT_X = "LOSE";
-const string ALT_Y = "DRAW";
-const string ALT_Z = "WIN";
 
 var totalPoints = 0;
 
@@ -29,14 +25,14 @@ foreach (var outcome in singleGame)
     var opponentPlayed = split.First();
     var response = split.Last();
 
-    var singleRoundPoints = calculatePoints(opponentPlayed, response);
+    var singleRoundPoints = CalculatePoints(opponentPlayed, response);
 
     totalPoints += singleRoundPoints;
 }
 
 Console.WriteLine($"Total points gained is {totalPoints}.");
 
-int calculatePoints(string opponentPlayed, string response)
+int CalculatePoints(string opponentPlayed, string response)
 {
     switch (opponentPlayed)
     {
