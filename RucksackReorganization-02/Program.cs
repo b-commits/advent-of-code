@@ -23,7 +23,7 @@ foreach (var rucksack in rucksacks)
 
 Console.WriteLine($"Total priority of group badges {totalPriority}.");
 
-char GetGroupBadge(List<string> groupRucksacks)
+char GetGroupBadge(IReadOnlyCollection<string> groupRucksacks)
 {
     return groupRucksacks
         .SelectMany(x => x.ToCharArray())
