@@ -23,17 +23,11 @@ foreach (var rucksack in rucksacks)
 
 Console.WriteLine($"Total priority of group badges {totalPriority}.");
 
-char? GetGroupBadge(List<string> groupRucksacks)
+char GetGroupBadge(List<string> groupRucksacks)
 {
-    foreach (var items in groupRucksacks.Select(groupRucksack => groupRucksack.ToCharArray()))
-    {
-        foreach (var item in items)
-        {
-            var foundBadge = groupRucksacks.All(rucksack => rucksack.Contains(item));
-            if (foundBadge) return item;
-        }
-    }
-    return null;
+    return groupRucksacks
+        .SelectMany(x => x.ToCharArray())
+        .FirstOrDefault(x => groupRucksacks.All(y => y.Contains(x)));
 }
 
 IEnumerable<int> GetItemTypes()
