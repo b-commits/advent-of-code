@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RucksackReorganization-01",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RucksackReorganization-02", "RucksackReorganization-02\RucksackReorganization-02.csproj", "{7590DAA6-2393-41C8-81C7-316F836DDF4D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CampCleanup-01", "CampCleanup-01\CampCleanup-01.csproj", "{2F758D06-D544-466A-862E-A5F5FC52FDD3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{7590DAA6-2393-41C8-81C7-316F836DDF4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7590DAA6-2393-41C8-81C7-316F836DDF4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7590DAA6-2393-41C8-81C7-316F836DDF4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F758D06-D544-466A-862E-A5F5FC52FDD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F758D06-D544-466A-862E-A5F5FC52FDD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F758D06-D544-466A-862E-A5F5FC52FDD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F758D06-D544-466A-862E-A5F5FC52FDD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
