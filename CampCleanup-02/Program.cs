@@ -13,14 +13,14 @@ foreach (var line in lines)
     var secondOfSecond = int.Parse(second.Last());
     var secondOfFirst = int.Parse(first.Last());
     
-    if (firstOfSecond >= firstOfFirst &&
-        secondOfSecond <= secondOfFirst 
+    if ((firstOfFirst >= firstOfSecond && firstOfFirst <= secondOfSecond) ||
+        (secondOfFirst <= secondOfSecond && secondOfFirst >= firstOfSecond) 
         ||
-        firstOfFirst >= firstOfSecond &&
-        secondOfFirst <= secondOfSecond)
+        (secondOfSecond >= firstOfFirst && secondOfSecond <= secondOfFirst) || 
+        (firstOfSecond >= firstOfFirst && firstOfSecond <= secondOfFirst))
     {
         overlapCount++;
     }
 }
 
-Console.WriteLine($"Number of full overlaps is: {overlapCount}.");
+Console.WriteLine($"Number of partial overlaps is: {overlapCount}.");
