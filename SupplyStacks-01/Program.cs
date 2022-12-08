@@ -1,24 +1,39 @@
 ﻿var lines = File.ReadLines("../../../input.txt");
 
-
 var stacks = GetInitialStacks(lines);
 
 foreach (var stack in stacks)
 {
     stack.RemoveAll(c => c == 32);
+    stack.Reverse();
 }
 
-
-foreach (var stack in stacks)
+foreach (var line in lines)
 {
-    stack.RemoveAll(c => c == 32);
+    if (!line.StartsWith('m')) continue;
+
+    var numPop = int.Parse(line.Split(" ")[1]);
+    var columnPop = int.Parse(line.Split(" ")[3]);
+    var columnPush = int.Parse(line.Split(" ").Last());
+
+    for (var i = 0; i < numPop; i++)
+    {
+        var lastElement = stacks[columnPop].Last();
+        stacks[columnPop].RemoveAt(stacks[columnPop].Count-1);
+        stacks[columnPush].Add(lastElement);
+    }
+}
+
+foreach (var stack in stacks.Where(stack => stack.Count > 0))
+{
+    Console.Write(stack.Last());
 }
 
 
 List<List<char>> GetInitialStacks(IEnumerable<string> inputLines)
 {
-    var columns = new List<List<char>>();
-    
+    var columns = Enumerable.Range(1, 10).Select(_ => new List<char>()).ToList();
+
     foreach (var line in inputLines.Select((value, idx) => new { idx, value }))
     {
         if (line.value[0] != '[')
@@ -26,11 +41,12 @@ List<List<char>> GetInitialStacks(IEnumerable<string> inputLines)
             return columns;
         }
 
-        columns.Add(new List<char>());
+        var y = 0;
         
-        for (var i = 1; i <= 29; i += 4)
+        for (var i = 1; i <= 33; i += 4)
         {
-            columns[line.idx].Add(line.value[i]);
+            y++;
+            columns[y].Add(line.value[i]);
         }
     }
     return columns;
